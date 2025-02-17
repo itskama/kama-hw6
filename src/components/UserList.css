@@ -1,0 +1,21 @@
+.users-container {
+    padding: 20px;
+    text-align: center;
+  }
+  .users-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .user-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  .user-card:hover {
+    transform: scale(1.05);
+  }
+  

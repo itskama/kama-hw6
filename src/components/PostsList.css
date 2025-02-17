@@ -1,0 +1,20 @@
+.posts-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .posts-list {
+    display: flex;
+    flex-direction: column; /* Посты будут в столбик */
+    gap: 2px; /* Расстояние между постами */
+    justify-content: flex-start ; /* Выравнивание постов по центру */
+  }
+  
+  .post-card {
+    width: 100%; /* Посты растягиваются на всю ширину контейнера */
+    max-width: 600px; /* Ограничение ширины карточек */
+    padding: 2px;
+    display: flex;
+    align-items: center;
+  }
+  
