@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import api from "../api/axiosInstance";
 import "./UserList.css";
 
 type User = {
@@ -13,9 +14,16 @@ const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => setUsers(data));
+    const fetchUsers = async () => {
+      try {
+        const response = await api.get<User[]>("/users");
+        setUsers(response.data);
+      } catch (error) {
+        console.error("Error fetching users", error);
+      }
+    };
+
+    fetchUsers();
   }, []);
 
   return (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import api from "../api/axiosInstance";
 import "./PostsList.css";
 
 type Post = {
@@ -12,9 +13,16 @@ const PostsList: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
-      .then((response) => response.json())
-      .then((data) => setPosts(data));
+    const fetchPosts = async () => {
+      try {
+        const response = await api.get<Post[]>(`/posts?userId=${userId}`);
+        setPosts(response.data);
+      } catch (error) {
+        console.error("Error fetching posts", error);
+      }
+    };
+
+    fetchPosts();
   }, [userId]);
 
   return (
